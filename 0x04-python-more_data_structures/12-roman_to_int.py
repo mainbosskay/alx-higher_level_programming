@@ -7,7 +7,7 @@ def roman_to_int(roman_string):
     indec = [romandt[num] for num in roman_string]
     figure = 0
     for dig in range(len(indec)):
-        figure += indec[digit]
-        if indec[digit - 1] < indec[digit] and digit != 0:
-            figure -= (indec[digit - 1] + indec[digit - 1])
+        figure += indec[dig]
+        if indec[dig - 1] < indec[dig] and dig != 0:
+            figure -= (indec[dig - 1] + indec[dig - 1])
     return figure
