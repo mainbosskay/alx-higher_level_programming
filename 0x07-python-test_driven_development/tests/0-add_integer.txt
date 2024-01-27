@@ -1,0 +1,45 @@
+Test for the add_integer function
+
+>>> add_integer = __import__("0-add_integer").add_integer
+
+Test case 1: Addition of integers
+>>> add_integer(10, 7)
+17
+
+Test case 2: Addition of float(typecasted to int)
+>>> add_integer(9.8, 8.6)
+17
+
+Test case 3: The default value of b is (98)
+>>> add_integer (5)
+103
+
+Test case 4: TypeError, a is neither integer nor float
+>>> add_integer("str", 6)
+Traceback (recent call):
+...
+TypeError: a must be an integer
+
+Test case 5: TypeError, b is neither integer nor float
+>>> add_integer(8, ())
+Traceback (recent call):
+...
+TypeError: b must be an integer
+
+Test case 6: TypeError, a and b are neither integers nor floats
+>>> add_integer([], {})
+Traceback (recent call):
+...
+TypeError: a must be an integer
+
+Test case 7: OverflowError, the if float overflow
+>>> add_integer(float('inf'), 4)
+Traceback (recent call):
+...
+OverflowError: cannot convert float infinity to integer
+
+Test case 8: ValueError, converting float NaN
+>>> add_integer(float('nan'), 7)
+Traceback (recent call):
+...
+ValueError: cannot convert float NaN to integer
