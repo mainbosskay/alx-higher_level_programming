@@ -16,30 +16,30 @@ Test case 3: The default value of b is (98)
 
 Test case 4: TypeError, a is neither integer nor float
 >>> add_integer("str", 6)
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
 Test case 5: TypeError, b is neither integer nor float
 >>> add_integer(8, ())
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 TypeError: b must be an integer
 
 Test case 6: TypeError, a and b are neither integers nor floats
 >>> add_integer([], {})
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
 Test case 7: OverflowError, the if float overflow
 >>> add_integer(float('inf'), 4)
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 OverflowError: cannot convert float infinity to integer
 
 Test case 8: ValueError, converting float NaN
 >>> add_integer(float('nan'), 7)
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 ValueError: cannot convert float NaN to integer
