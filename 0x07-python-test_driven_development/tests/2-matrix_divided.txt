@@ -1,45 +1,60 @@
-Test for the add_ integer function
+Test for the matrix_divided function
 
->>> add_integer = __import__("0-add_integer").add_integer
+>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
 
-Test case 1: Addition of integers
->>> add_integer(10, 7)
-17
+Test case 1: Dvision of matrix
+>>> matrix = [[4, 2, 8], [6, 5, 9]]
+>>> div = 2
+>>>matrix_divided(matrix, div)
+[[2.0, 1.0, 4.0], [3.0, 2.5, 4.5]]
 
-Test case 2: Addition of float(typecasted to int)
->>> add_integer(9.8, 8.6)
-17
-
-Test case 3: The default value of b is (98)
->>> add_integer (5)
-103
-
-Test case 4: TypeError, a is neither integer nor float
->>> add_integer("str", 6)
+Test case 2: TypeError, matrix is not a list
+>>> matrix = 348
+>>> div = 2
+>>> matrix_divided(matrix, div)
 Traceback (recent call):
 ...
-TypeError: a must be an integer
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-Test case 5: TypeError, b is neither integer nor float
->>> add_integer(8, ())
+Test case 3: TypeError, rows that have different sizes in matrix
+>>> matrix = [[4, 3, 7], [8, 5, 3], [7, 5]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
 Traceback (recent call):
 ...
-TypeError: b must be an integer
+TypeError: Each row of the matrix must have the same size
 
-Test case 6: TypeError, a and b are neither integers nor floats
->>> add_integer([], {})
+Test case 4: TypeError, divisor is neither an integer nor float
+>>> matrix = [[4, 1], [5, 8]]
+>>> div = "str"
+>>> matrix_divided(matrix, div)
 Traceback (recent call):
 ...
-TypeError: a must be an integer
+TypeError: div must be a number
 
-Test case 7: OverflowError, the if float overflow
->>> add_integer(float('inf'), 4)
+Test case 5: ZeroDivisionError, divisor is zero
+>>> matrix = [[3, 6], [7, 5]]
+>>> div = 0
+>>> matrix_divided(matrix, div)
 Traceback (recent call):
 ...
-OverflowError: cannot convert float infinity to integer
+ZeroDivisionError: division by zero
 
-Test case 8: ValueError, converting float NaN
->>> add_integer(float('nan'), 7)
+Test case 6: All values == 0.0 when div is float('inf')
+>>> matrix = [[4, 7, 3], [2, 5, 6]]
+>>> div = float('inf')
+>>> matrix_divided(matrix, div)
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+Test case 7: TypeError, one argument is missing
+>>> matrix = [[3, 7, 2], [4, 5, 9]]
+>>> matrix_divided(matrix)
 Traceback (recent call):
 ...
-ValueError: cannot convert float NaN to integer
+TypeError: matrix() missing 1 required positional argument: 'div'
+
+Test case 8: TypeError, two arguments are missing
+>>> matrix_divided()
+Traceback (recent call):
+...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
