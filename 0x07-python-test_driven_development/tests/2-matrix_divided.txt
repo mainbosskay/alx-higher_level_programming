@@ -5,14 +5,14 @@ Test for the matrix_divided function
 Test case 1: Dvision of matrix
 >>> matrix = [[4, 2, 8], [6, 5, 9]]
 >>> div = 2
->>>matrix_divided(matrix, div)
+>>> matrix_divided(matrix, div)
 [[2.0, 1.0, 4.0], [3.0, 2.5, 4.5]]
 
 Test case 2: TypeError, matrix is not a list
 >>> matrix = 348
 >>> div = 2
 >>> matrix_divided(matrix, div)
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
@@ -20,7 +20,7 @@ Test case 3: TypeError, rows that have different sizes in matrix
 >>> matrix = [[4, 3, 7], [8, 5, 3], [7, 5]]
 >>> div = 2
 >>> matrix_divided(matrix, div)
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 TypeError: Each row of the matrix must have the same size
 
@@ -28,7 +28,7 @@ Test case 4: TypeError, divisor is neither an integer nor float
 >>> matrix = [[4, 1], [5, 8]]
 >>> div = "str"
 >>> matrix_divided(matrix, div)
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 TypeError: div must be a number
 
@@ -36,7 +36,7 @@ Test case 5: ZeroDivisionError, divisor is zero
 >>> matrix = [[3, 6], [7, 5]]
 >>> div = 0
 >>> matrix_divided(matrix, div)
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 ZeroDivisionError: division by zero
 
@@ -49,12 +49,12 @@ Test case 6: All values == 0.0 when div is float('inf')
 Test case 7: TypeError, one argument is missing
 >>> matrix = [[3, 7, 2], [4, 5, 9]]
 >>> matrix_divided(matrix)
-Traceback (recent call):
+Traceback (most recent call last):
 ...
-TypeError: matrix() missing 1 required positional argument: 'div'
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
 Test case 8: TypeError, two arguments are missing
 >>> matrix_divided()
-Traceback (recent call):
+Traceback (most recent call last):
 ...
 TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'

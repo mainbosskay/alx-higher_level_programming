@@ -14,7 +14,7 @@ def matrix_divided(matrix, div):
     matrixsz = [0, 0]
     functionres = []
     lst_err = "matrix must be a matrix (list of lists) of integers/floats"
-    matrixrow_err = "Each rows of the matrix must have the same size"
+    matrixrow_err = "Each row of the matrix must have the same size"
     if not isinstance(matrix, list):
         raise TypeError(lst_err)
     matrixsz[0] = len(matrix)
