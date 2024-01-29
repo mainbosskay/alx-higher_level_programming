@@ -75,6 +75,7 @@ class Rectangle:
         print("Bye rectangle...")
         type(self).number_of_instances -= 1
 
+    @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         """Calculates and returns the biggest rectangle based on area
         Args: rect_1 (Rectangle): first rectangle
