@@ -57,18 +57,18 @@ class Rectangle:
         """Printing the rectangle with the # character"""
         if self.__width == 0 or self.__height == 0:
             return ("")
-        rectgle = []
+        regle = []
         for k in range(self.__height):
-            [rectgle.append(str(self.print_symbol)) for t in range(self.__width)]
+            [regle.append(str(self.print_symbol)) for t in range(self.__width)]
             if k != self.__height - 1:
-                rectgle.append("\n")
-        return ("".join(rectgle))
+                regle.append("\n")
+        return ("".join(regle))
 
     def __repr__(self):
         """Calculates and returns string representation of the rectangle"""
-        rectgle = "Rectangle(" + str(self.__width)
-        rectgle = rectgle + ", " + str(self.__height) + ")"
-        return (rectgle)
+        regle = "Rectangle(" + str(self.__width)
+        regle = regle + ", " + str(self.__height) + ")"
+        return (regle)
 
     def __del__(self):
         """Printing the message Bye reactangle"""
