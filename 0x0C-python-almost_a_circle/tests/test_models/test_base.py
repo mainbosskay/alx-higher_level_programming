@@ -17,20 +17,20 @@ class TestBaseInstance(unittest.TestCase):
         self.assertEqual(base1.id, base2.id - 1)
 
     def test_incr_id_three_bases(self):
-        """Test base with three instances the increments ID correctly"""
+        """Test base with three instances the increments ID corretly"""
         base1 = Base()
         base2 = Base()
         base3 = Base()
         self.assertEqual(base1.id, base3.id - 2)
 
     def test_incr_id_None(self):
-        """Test checks ID increments correctly when initialized with None"""
+        """Test checks ID increments corretly when initialized with None"""
         base1 = Base(None)
         base2 = Base(None)
         self.assertEqual(base1.id, base2.id - 1)
 
     def test_assign_unique_id(self):
-        """Test confirms the correct ID of a unique ID when initialized"""
+        """Test confirms the corret ID of a unique ID when initialized"""
         self.assertEqual(23, Base(23).id)
 
     def test_inst_after_unique_id(self):
@@ -57,101 +57,101 @@ class TestBaseInstance(unittest.TestCase):
             Base(1, 2)
 
     def test_string_id(self):
-        """Test if string ID is handled correctly"""
+        """Test if string ID is handled corretly"""
         self.assertEqual("test", Base("test").id)
 
     def test_dictionary_id(self):
-        """Test if dictionary ID is handled correctly"""
+        """Test if dictionary ID is handled corretly"""
         seld.assertEqual({"key": 2, "val": 3}, Base({"key": 2, "val": 3}).id)
 
     def test_list_id(self):
-        """Test list ID is handled correctly"""
+        """Test list ID is handled corretly"""
         self.assertEqual([2, 3, 9], Base([2, 3, 9]).id)
 
     def test_tuple_id(self):
-        """Test evaluates correct handling of tuple ID"""
+        """Test evaluates corret handling of tuple ID"""
         self.assertEqual((9, 2), Base((9, 2)).id)
 
     def test_float_id(self):
-        """Test evaluates correct handling of float ID"""
+        """Test evaluates corret handling of float ID"""
         self.assertEqual(9.8, Base(9.8).id)
 
     def test_inf_id(self):
-        """Test evaluates correct handling of inf ID"""
+        """Test evaluates corret handling of inf ID"""
         self.assertEqual(float('inf'), Base(float('inf')).id)
 
     def test_NaN_id(self):
-        """Test evaluates correct handling of NaN ID"""
+        """Test evaluates corret handling of NaN ID"""
         self.assertNotEqual(float('nan'), Base(float('nan')).id)
 
     def test_complex_id(self):
-        """Test evaluates correct handling of complex ID"""
+        """Test evaluates corret handling of complex ID"""
         self.assertEqual(complex(7), Base(complex(7)).id)
 
     def test_bool_id(self):
-        """Test evaluates correct handling of bool ID"""
+        """Test evaluates corret handling of bool ID"""
         self.assertEqual(False, Base(False).id)
 
     def test_set_id(self):
-        """Test evaluates correct handling of set ID"""
+        """Test evaluates corret handling of set ID"""
         self.assertEqual({2, 3, 4}, Base({2, 3, 4}).id)
 
     def test_frozenset_id(self):
-        """Test evaluates correct handling of frozenset ID"""
+        """Test evaluates corret handling of frozenset ID"""
         self.assertEqual(frozenset({2, 3, 9}), Base({2, 3, 9}).id)
 
     def test_range_id(self):
-        """Test evaluates correct handling of range ID"""
+        """Test evaluates corret handling of range ID"""
         self.assertEqual(range(8), Base(range(8)).id)
 
     def test_bytes_id(self):
-        """Test evaluates correct handling of bytes ID"""
+        """Test evaluates corret handling of bytes ID"""
         self.assertEqual(b'Test', Base(b'Test').id)
 
     def test_bytearray_id(self):
-        """Test evaluates correct handling of byte array ID"""
+        """Test evaluates corret handling of byte array ID"""
         self.assertEqual(bytearray(b'val'), Base(bytearray(b'val')).id)
 
     def test_memoryview_id(self):
-        """Test evaluates correct handling of memory view ID"""
+        """Test evaluates corret handling of memory view ID"""
         self.assertEqual(memoryview(b'key'), Base(memoryview(b'key')).id)
 
 
 class TestBasetojsonstring(unittest.TestCase):
     """Unittest for converting instances of Base class to JSON strings"""
 
-    def test_to_json_string_rect_type(self):
+    def test_to_json_string_ret_type(self):
         """Test validates to_json_string for rectangles"""
-        rect = Rectangle(10, 9, 6, 4, 5)
-        self.assertEqual(str, type(Base.to_json_string([rect.to_dictionary()])))
+        ret = Rectangle(10, 9, 6, 4, 5)
+        self.assertEqual(str, type(Base.to_json_string([ret.to_dictionary()])))
 
-    def test_to_json_string_rect_one_dict(self):
+    def test_to_json_string_ret_one_dict(self):
         """Test to_json_string length for a rectangle"""
-        rect = rectangle(10, 9, 6, 4, 5)
-        self.assertTrue(len(Base.to_json_string([rect.to_dictionary()])) == 53)
+        ret = rectangle(10, 9, 6, 4, 5)
+        self.assertTrue(len(Base.to_json_string([ret.to_dictionary()])) == 53)
 
-    def test_to_json_string_rect_two_dict(self):
+    def test_to_json_string_ret_two_dict(self):
         """Test to_json_string length for two rectangle dict"""
-        rect1 = Rectangle(2, 4, 6, 18, 3)
-        rect2 = Rectangle(2, 4, 3, 6, 12)
-        lst_dicts = [rect1.to_dictionary(), rect2.to_dictionary()]
+        ret1 = Rectangle(2, 4, 6, 18, 3)
+        ret2 = Rectangle(2, 4, 3, 6, 12)
+        lst_dicts = [ret1.to_dictionary(), ret2.to_dictionary()]
         self.assertTrue(len(Base.to_json_string(lst_dicts)) == 106)
 
     def test_to_json_string_sqr_type(self):
         """Test to_json_string outputs a string for a square"""
-        sqre = Square(10, 5, 7, 8)
-        self.assertEqual(str, type(Base.to_json_string([sqre.to_dictionary()])))
+        sqe = Square(10, 5, 7, 8)
+        self.assertEqual(str, type(Base.to_json_string([sqe.to_dictionary()])))
 
     def test_to_json_string_sqr_one_dict(self):
         """Test to_json_string outputs length for one square dict"""
-        sqre = Square(10, 5, 7, 8)
-        self.assertTrue(len(Base.to_json_string([sqre.to_dictionary()])) == 39)
+        sqe = Square(10, 5, 7, 8)
+        self.assertTrue(len(Base.to_json_string([sqe.to_dictionary()])) == 39)
 
     def test_to_json_string_sqr_two_dict(self):
         """Test to_json_string outputs length for two square dict"""
-        sqre1 = Square(15, 10, 9, 6)
-        sqre2 = Square(6, 8, 10, 28)
-        lst_dicts = [sqre1.to_dictionary(), sqre2.to_dictionary()]
+        sqe1 = Square(15, 10, 9, 6)
+        sqe2 = Square(6, 8, 10, 28)
+        lst_dicts = [sqe1.to_dictionary(), sqe2.to_dictionary()]
         self.assertTrue(len(Base.to_json_string(lst_dicts)) == 78)
 
     def test_to_json_string_empt_lst(self):
@@ -180,7 +180,7 @@ class TestBasesavetofile(unittest.TestCase):
     def tearDown(self):
         """Checks and deletes created files"""
         try:
-           remove("Rectangle.json")
+            remove("Rectangle.json")
         except IOError:
             pass
         try:
@@ -192,49 +192,49 @@ class TestBasesavetofile(unittest.TestCase):
         except IOError:
             pass
 
-    def test_savetofile_onerect(self):
+    def test_savetofile_oneret(self):
         """Test: save_to_file creating one rectangle file"""
-        rect = Rectangle(15, 7, 8, 10, 4)
-        Rectangle.save_to_file([rect])
+        ret = Rectangle(15, 7, 8, 10, 4)
+        Rectangle.save_to_file([ret])
         with open("Rectangle.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 53)
 
-    def test_savetofile_tworect(self):
+    def test_savetofile_tworet(self):
         """Test: save_to_file creating two rectangle file"""
-        rect1 = Rectangle(14, 7, 10, 9, 3)
-        rect2 = Rectangle(5, 7, 8, 10, 15)
-        Rectangle.save_to_file([rect1, rect2])
+        ret1 = Rectangle(14, 7, 10, 9, 3)
+        ret2 = Rectangle(5, 7, 8, 10, 15)
+        Rectangle.save_to_file([ret1, ret2])
         with open("Rectangle.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 106)
 
     def test_savetofile_onesqr(self):
         """Test: save_to_file creating one square file"""
-        sqre = Square(8, 6, 4, 2)
-        Square.save_to_file([sqre])
+        sqe = Square(8, 6, 4, 2)
+        Square.save_to_file([sqe])
         with open("Square.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 38)
 
     def test_savetofile_twosqr(self):
         """Test: save_to_file creating two squares file"""
-        sqre1 = Square(9, 6, 7, 8)
-        sqre2 = Square(5, 4, 3, 8)
-        Square.save_to_file([sqre1, sqre2])
+        sqe1 = Square(9, 6, 7, 8)
+        sqe2 = Square(5, 4, 3, 8)
+        Square.save_to_file([sqe1, sqe2])
         with open("Square.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 76)
 
     def test_savetofile_clsnameforfilename(self):
         """Test: save_to_file uses class name as filename"""
-        sqre = Square(9, 6, 3, 7)
-        Base.save_to_file([sqre])
+        sqe = Square(9, 6, 3, 7)
+        Base.save_to_file([sqe])
         with open("Base.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 39)
 
     def test_savetofile_overwrite(self):
         """Test: save_to_file overwrites file content"""
-        sqre = Square(4, 9, 6, 28)
-        Square.save_to_file([sqre])
+        sqe = Square(4, 9, 6, 28)
+        Square.save_to_file([sqe])
         sqr = Square(14, 8, 7, 10)
-        Square.save_to_file([sqre])
+        Square.save_to_file([sqe])
         with open("Square.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 39)
 
@@ -264,22 +264,22 @@ class TestBasesavetofile(unittest.TestCase):
 class TestBasefromjsonstring(unittest.TestCase):
     """Unittest for instantiating Base class instances from JSON strings"""
 
-     def testfromjsonstringtype(self):
-         """Test: from_json_string returns list of rectangle dict"""
+    def testfromjsonstringtype(self):
+        """Test: from_json_string returns list of rectangle dict"""
         s_data = [{"id": 23, "width": 15, "height": 7}]
         json_dt = Rectangle.to_json_string(s_data)
         ds_data = Rectangle.from_json_string(json_dt)
         self.assertEqual(list, type(ds_data))
 
-    def testfromjsonstringonerect(self):
-        """Test: from_json_string to return accurate output for one rectangle"""
+    def testfromjsonstringoneret(self):
+        """Test: from_json_string return accurate output for one rectangle"""
         s_data = [{"id": 77, "width": 23, "height": 4, "x": 8}]
         json_dt = Rectangle.to_json_string(s_data)
         ds_data = Rectangle.from_json_string(json_dt)
         self.assertEqual(s_data, ds_data)
 
-    def testfromjsonstringtworect(self):
-        """Test: from_json_string to return accurate output for two rectangles"""
+    def testfromjsonstringtworet(self):
+        """Test: from_json_string return accurate output for two rectangles"""
         s_data = [
             {"id": 33, "width": 15, "height": 8, "x": 2, "y": 7},
             {"id": 65, "width": 9, "height": 3, "x": 4, "y": 8}
@@ -325,63 +325,63 @@ class TestBasefromjsonstring(unittest.TestCase):
 
 
 class TestBasecreate(unittest.TestCase):
-    """Unittest for instantiating instances with the create method of Base class"""
+    """Unittest for instantiating instances with create method of Base class"""
 
-    def testcreateoriginalrect(self):
+    def testcreateoriginalret(self):
         """Test: create method to return original rectangle"""
-        rect1 = Rectangle(2, 5, 8, 3, 4)
-        rect1_dct = rect1.to_dictionary()
-        rect2 = Rectangle.create(**rect1_dct)
-        self.assertEqual("[Rectangle] (4) 8/3 - 2/5", str(rect1))
+        ret1 = Rectangle(2, 5, 8, 3, 4)
+        ret1_dct = ret1.to_dictionary()
+        ret2 = Rectangle.create(**ret1_dct)
+        self.assertEqual("[Rectangle] (4) 8/3 - 2/5", str(ret1))
 
-    def testcreatenewrect(self):
+    def testcreatenewret(self):
         """Test: create method to return new rectangle"""
-        rect1 = Rectangle(3, 4, 5, 8, 9)
-        rect1_dct = rect1.to_dictionary()
-        rect2 = Rectangle.create(**rect1_dct)
-        self.assertEqual("[Rectangle] (9) 5/8 - 3/4", str(rect2))
+        ret1 = Rectangle(3, 4, 5, 8, 9)
+        ret1_dct = ret1.to_dictionary()
+        ret2 = Rectangle.create(**ret1_dct)
+        self.assertEqual("[Rectangle] (9) 5/8 - 3/4", str(ret2))
 
-    def testcreaterectinst(self):
+    def testcreateretinst(self):
         """Test: create to return a new rectangle instance"""
-        rect1 = Rectangle(2, 5, 8, 3, 4)
-        rect1_dct = rect1.to_dictionary()
-        rect2 = Rectangle.create(**rect1_dct)
-        self.assertIsNot(rect1, rect2)
+        ret1 = Rectangle(2, 5, 8, 3, 4)
+        ret1_dct = ret1.to_dictionary()
+        ret2 = Rectangle.create(**ret1_dct)
+        self.assertIsNot(ret1, ret2)
 
-    def testcreaterectdiffinst(self):
+    def testcreateretdiffinst(self):
         """Test: create to return different instance from original"""
-        rect1 = Rectangle(2, 5, 8, 3, 4)
-        rect1_dct = rect1.to_dictionary()
-        rect2 = Rectangle.create(**rect1_dct)
-        self.assertNotEqual(rect1, rect2)
+        ret1 = Rectangle(2, 5, 8, 3, 4)
+        ret1_dct = ret1.to_dictionary()
+        ret2 = Rectangle.create(**ret1_dct)
+        self.assertNotEqual(ret1, ret2)
 
     def testcreateoriginalsqr(self):
         """Test: create method to return original square"""
-        sqre1 = Square(4, 5, 9, 2)
-        sqre1_dct = sqre1.to_dictionary()
-        sqre2 = Square.create(**sqre1_dct)
-        self.assertEqual("[Square] (2) 5/9 - 4", str(sqre1))
+        sqe1 = Square(4, 5, 9, 2)
+        sqe1_dct = sqe1.to_dictionary()
+        sqe2 = Square.create(**sqe1_dct)
+        self.assertEqual("[Square] (2) 5/9 - 4", str(sqe1))
 
     def testcreatenewsqr(self):
         """Test: create method to return new square"""
-        sqre1 = Square(4, 6, 7, 2)
-        sqre1_dct = sqre1.to_dictionary()
-        sqre2 = Square.create(**sqre1_dct)
-        self.assertEqual("[Square] (2) 6/7 - 4", str(sqre2))
+        sqe1 = Square(4, 6, 7, 2)
+        sqe1_dct = sqe1.to_dictionary()
+        sqe2 = Square.create(**sqe1_dct)
+        self.assertEqual("[Square] (2) 6/7 - 4", str(sqe2))
 
     def testcreatesqrinst(self):
         """Test: create method generates a new square instance"""
-        sqre1 = Square(4, 5, 9, 2)
-        sqre1_dct = sqre1.to_dictionary()
-        sqre2 = Square.create(**sqre1_dct)
-        self.assertIsNot(sqre1, sqre2)
+        sqe1 = Square(4, 5, 9, 2)
+        sqe1_dct = sqe1.to_dictionary()
+        sqe2 = Square.create(**sqe1_dct)
+        self.assertIsNot(sqe1, sqe2)
 
     def testcreatediffinst(self):
         """Test create to return different instance from original"""
-        sqre1 = Square(4, 6, 7, 2)
-        sqre1_dct = sqre1.to_dictionary()
-        sqre2 = Square.create(**sqre1_dct)
-        self.assertNotEqual(sqre1, sqre2)
+        sqe1 = Square(4, 6, 7, 2)
+        sqe1_dct = sqe1.to_dictionary()
+        sqe2 = Square.create(**sqe1_dct)
+        self.assertNotEqual(sqe1, sqe2)
 
 
 class TestBaseloadfromfile(unittest.TestCase):
@@ -399,51 +399,51 @@ class TestBaseloadfromfile(unittest.TestCase):
         except IOError:
             pass
 
-    def testloadfromfilestrect(self):
+    def testloadfromfilestret(self):
         """Test: load_from_file to retrieve first rectangle from the file"""
-        rect1 = Rectangle(14, 9, 7, 11, 3)
-        rect2 = Rectangle(5, 8, 10, 7, 6)
-        Rectangle.save_to_file([rect1, rect2])
+        ret1 = Rectangle(14, 9, 7, 11, 3)
+        ret2 = Rectangle(5, 8, 10, 7, 6)
+        Rectangle.save_to_file([ret1, ret2])
         loaded_rec = Rectangle.load_from_file()
-        self.assertEqual(str(rect1), str(loaded_rec[0]))
+        self.assertEqual(str(ret1), str(loaded_rec[0]))
 
-    def testloadfromfilescdrect(self):
+    def testloadfromfilescdret(self):
         """Test: load_from_file to retrieve second rectangle from the file"""
-        rect1 = Rectangle(14, 9, 7, 11, 3)
-        rect2 = Rectangle(5, 8, 10, 7, 6)
-        Rectangle.save_to_file([rect1, rect2])
+        ret1 = Rectangle(14, 9, 7, 11, 3)
+        ret2 = Rectangle(5, 8, 10, 7, 6)
+        Rectangle.save_to_file([ret1, ret2])
         loaded_rec = Rectangle.load_from_file()
-        self.assertEqual(str(rect2), str(loaded_rec[1]))
+        self.assertEqual(str(ret2), str(loaded_rec[1]))
 
-    def testloadfromfilerectype(self):
+    def testloadfromfileretype(self):
         """Test load_from_file to retrieve a list of rectangles"""
-        rect1 = Rectangle(14, 9, 7, 11, 3)
-        rect2 = Rectangle(5, 8, 10, 7, 6)
-        Rectangle.save_to_file([rect1, rect2])
+        ret1 = Rectangle(14, 9, 7, 11, 3)
+        ret2 = Rectangle(5, 8, 10, 7, 6)
+        Rectangle.save_to_file([ret1, ret2])
         loaded_rec = Rectangle.load_from_file()
         self.assertTrue(all(type(objt) == Rectangle for objt in loaded_rec))
 
     def testloadfromfilefstsqr(self):
         """Test: load_from_file to retrieve the first square from the file"""
-        sqre1 = Square(3, 8, 6, 9)
-        sqre2 = Square(5, 8, 3, 7)
-        Square.save_to_file([sqre1, sqre2])
+        sqe1 = Square(3, 8, 6, 9)
+        sqe2 = Square(5, 8, 3, 7)
+        Square.save_to_file([sqe1, sqe2])
         loaded_sqr = Square.load_from_file()
-        self.assertEqual(str(sqre1), str(loaded_sqr[0]))
+        self.assertEqual(str(sqe1), str(loaded_sqr[0]))
 
     def testloadfromfilescdsqr(self):
         """Test: load_from_file to retrieve the second square from the file"""
-        sqre1 = Square(3, 8, 6, 9)
-        sqre2 = Square(5, 8, 3, 7)
-        Square.save_to_file([sqre1, sqre2])
+        sqe1 = Square(3, 8, 6, 9)
+        sqe2 = Square(5, 8, 3, 7)
+        Square.save_to_file([sqe1, sqe2])
         loaded_sqr = Square.load_from_file()
-        self.assertEqual(str(sqre2), str(loaded_sqr[1]))
+        self.assertEqual(str(sqe2), str(loaded_sqr[1]))
 
     def testloadfromfilesqrtype(self):
         """Test: load_from_file to retrieve list of squares"""
-        sqre1 = Square(3, 8, 6, 9)
-        sqre2 = Square(5, 8, 3, 7)
-        Square.save_to_file([sqre1, sqre2])
+        sqe1 = Square(3, 8, 6, 9)
+        sqe2 = Square(5, 8, 3, 7)
+        Square.save_to_file([sqe1, sqe2])
         loaded_sqr = Square.load_from_file()
         self.assertTrue(all(type(objt) == Square for objt in loaded_sqr))
 
@@ -477,49 +477,49 @@ class TestBasesavetofilecsv(unittest.TestCase):
         except IOError:
             pass
 
-    def testsavetofilecsvonerect(self):
+    def testsavetofilecsvoneret(self):
         """Test: save_to_file_csv generates file for one rectangle"""
-        rect = Rectangle(13, 8, 4, 11, 9)
-        Rectangle.save_to_file_csv([rect])
+        ret = Rectangle(13, 8, 4, 11, 9)
+        Rectangle.save_to_file_csv([ret])
         with open("Rectangle.csv", "r") as fl:
             self.assertTrue("9,13,8,4,11", fl.read())
 
-    def testsavetofilecsvtworects(self):
+    def testsavetofilecsvtworets(self):
         """Test: save_to_file_csv generates file for two rectangles"""
-        rect1 = Rectangle(10, 3, 4, 6, 7)
-        rect2 = Rectangle(4, 7, 9, 11, 3)
-        Rectangle.save_to_file_csv([rect1, rect2])
+        ret1 = Rectangle(10, 3, 4, 6, 7)
+        ret2 = Rectangle(4, 7, 9, 11, 3)
+        Rectangle.save_to_file_csv([ret1, ret2])
         with open("Rectangle.csv", "r") as fl:
             self.assertTrue("7,10,3,4,6\n4,7,9,11,3", fl.read())
 
     def testsavetofilecsvonesqr(self):
         """Test: save_to_file_csv generates file for one square"""
-        sqre = Square(14, 10, 7, 6)
-        Square.save_to_file_csv([sqre])
+        sqe = Square(14, 10, 7, 6)
+        Square.save_to_file_csv([sqe])
         with open("Square.csv", "r") as fl:
             self.assertTrue("6,14,10,7", fl.read())
 
     def testsavetofilecsvtwosqrs(self):
         """Test: save_to_file_csv generates file for two squares"""
-        sqre1 = Square(12, 6, 2, 5)
-        sqre2 = Square(7, 10, 3, 6)
-        Square.save_to_file_csv([sqre1, sqre2])
+        sqe1 = Square(12, 6, 2, 5)
+        sqe2 = Square(7, 10, 3, 6)
+        Square.save_to_file_csv([sqe1, sqe2])
         with open("Square.csv", "r") as fl:
             self.assertTrue("5,12,6,2\n6,7,10,3", fl.read())
 
     def testsavetofilecsvclsnameforfilename(self):
         """Test: save_to_file_csv uses class name as filename"""
-        sqre = Square(14, 10, 6, 11)
-        Base.save_to_file_csv([sqre])
+        sqe = Square(14, 10, 6, 11)
+        Base.save_to_file_csv([sqe])
         with open("Base.csv", "r") as fl:
             self.assertTrue("11,14,10,6", fl.read())
 
     def testsavetofilecsvoverwrite(self):
         """Test: save_to_file_csv overwrites file content"""
-        sqre = Square(4, 9, 6, 30)
-        Square.save_to_file([sqre])
-        sqre = Square(14, 7, 9, 11)
-        Square.save_to_file_csv([sqre])
+        sqe = Square(4, 9, 6, 30)
+        Square.save_to_file([sqe])
+        sqe = Square(14, 7, 9, 11)
+        Square.save_to_file_csv([sqe])
         with open("Square.csv", "r") as fl:
             self.assertTrue("11,14,7,9", fl.read())
 
@@ -561,51 +561,51 @@ class TestBaseloadfromfilecsv(unittest.TestCase):
         except IOError:
             pass
 
-    def testloadfromfilecsvfstrect(self):
+    def testloadfromfilecsvfstret(self):
         """Test: load_from_file_csv to retrieve first rectangle from file"""
-        rect1 = Rectangle(14, 9, 7, 11, 3)
-        rect2 = Rectangle(5, 8, 10, 7, 6)
-        Rectangle.save_to_file_csv([rect1, rect2])
+        ret1 = Rectangle(14, 9, 7, 11, 3)
+        ret2 = Rectangle(5, 8, 10, 7, 6)
+        Rectangle.save_to_file_csv([ret1, ret2])
         loaded_rec = Rectangle.load_from_file_csv()
-        self.assertEqual(str(rec1), str(loaded_rec[0]))
+        self.assertEqual(str(ret1), str(loaded_rec[0]))
 
-    def testloadfromfilecsvscdrect(self):
+    def testloadfromfilecsvscdret(self):
         """Test load_from_file_csv to retrieve second rectangle from file"""
-        rec1 = Rectangle(14, 9, 7, 11, 3)
-        rect2 = Rectangle(5, 8, 10, 7, 6)
-        Rectangle.save_to_file_csv([rect1, rect2])
+        ret1 = Rectangle(14, 9, 7, 11, 3)
+        ret2 = Rectangle(5, 8, 10, 7, 6)
+        Rectangle.save_to_file_csv([ret1, ret2])
         loaded_rec = Rectangle.load_from_file_csv()
-        self.assertEqual(str(rec2), str(loaded_rec[1]))
+        self.assertEqual(str(ret2), str(loaded_rec[1]))
 
-    def testloadfromfilecsvrectype(self):
+    def testloadfromfilecsvretype(self):
         """Test: load_from_file_csv retrieve a list of rectangles"""
-        rect1 = Rectangle(14, 9, 7, 11, 3)
-        rect2 = Rectangle(5, 8, 10, 7, 6)
-        Rectangle.save_to_file_csv([rect1, rect2])
+        ret1 = Rectangle(14, 9, 7, 11, 3)
+        ret2 = Rectangle(5, 8, 10, 7, 6)
+        Rectangle.save_to_file_csv([ret1, ret2])
         loaded_rec = Rectangle.load_from_file_csv()
         self.assertTrue(all(type(objt) == Rectangle for objt in loaded_rec))
 
     def testloadfromfilecsvfstsqr(self):
         """Test: load_from_file_csv retrieve the first square from file"""
-        sqre1 = Square(6, 9, 10, 11)
-        sqre2 = Square(5, 8, 3, 7)
-        Square.save_to_file_csv([sqre1, sqre2])
+        sqe1 = Square(6, 9, 10, 11)
+        sqe2 = Square(5, 8, 3, 7)
+        Square.save_to_file_csv([sqe1, sqe2])
         loaded_sqr = Square.load_from_file_csv()
-        self.assertEqual(str(sqr1), str(loaded_sqr[0]))
+        self.assertEqual(str(sqe1), str(loaded_sqr[0]))
 
     def testloadfromfilecsvscdsqr(self):
         """Test: load_from_file_csv retrieve the second square from file"""
-        sqre1 = Square(6, 9, 10, 11)
-        sqre2 = Square(5, 8, 3, 7)
-        Square.save_to_file_csv([sqre1, sqre2])
+        sqe1 = Square(6, 9, 10, 11)
+        sqe2 = Square(5, 8, 3, 7)
+        Square.save_to_file_csv([sqe1, sqe2])
         loaded_sqr = Square.load_from_file_csv()
-        self.assertEqual(str(sqre2), str(loaded_sqre[1]))
+        self.assertEqual(str(sqe2), str(loaded_sqe[1]))
 
     def testloadfromfilecsvsqrtype(self):
         """Test: load_from_file_csv to retrieve list of squares"""
-        sqre1 = Square(6, 9, 10, 11)
-        sqre2 = Square(5, 8, 3, 7)
-        Square.save_to_file_csv([sqre1, sqre2])
+        sqe1 = Square(6, 9, 10, 11)
+        sqe2 = Square(5, 8, 3, 7)
+        Square.save_to_file_csv([sqe1, sqe2])
         loaded_sqr = Square.load_from_file_csv()
         self.assertTrue(all(type(objt) == Square for objt in loaded_sqr))
 
