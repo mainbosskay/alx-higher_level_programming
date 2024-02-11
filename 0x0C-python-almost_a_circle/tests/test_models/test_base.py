@@ -62,7 +62,7 @@ class TestBaseInstance(unittest.TestCase):
 
     def test_dictionary_id(self):
         """Test if dictionary ID is handled corretly"""
-        seld.assertEqual({"key": 2, "val": 3}, Base({"key": 2, "val": 3}).id)
+        self.assertEqual({"key": 2, "val": 3}, Base({"key": 2, "val": 3}).id)
 
     def test_list_id(self):
         """Test list ID is handled corretly"""
@@ -127,7 +127,7 @@ class TestBasetojsonstring(unittest.TestCase):
 
     def test_to_json_string_ret_one_dict(self):
         """Test to_json_string length for a rectangle"""
-        ret = rectangle(10, 9, 6, 4, 5)
+        ret = Rectangle(10, 9, 6, 4, 5)
         self.assertTrue(len(Base.to_json_string([ret.to_dictionary()])) == 53)
 
     def test_to_json_string_ret_two_dict(self):
@@ -149,8 +149,8 @@ class TestBasetojsonstring(unittest.TestCase):
 
     def test_to_json_string_sqr_two_dict(self):
         """Test to_json_string outputs length for two square dict"""
-        sqe1 = Square(15, 10, 9, 6)
-        sqe2 = Square(6, 8, 10, 28)
+        sqe1 = Square(15, 5, 9, 6)
+        sqe2 = Square(6, 8, 7, 28)
         lst_dicts = [sqe1.to_dictionary(), sqe2.to_dictionary()]
         self.assertTrue(len(Base.to_json_string(lst_dicts)) == 78)
 
@@ -194,15 +194,15 @@ class TestBasesavetofile(unittest.TestCase):
 
     def test_savetofile_oneret(self):
         """Test: save_to_file creating one rectangle file"""
-        ret = Rectangle(15, 7, 8, 10, 4)
+        ret = Rectangle(15, 7, 8, 5, 4)
         Rectangle.save_to_file([ret])
         with open("Rectangle.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 53)
 
     def test_savetofile_tworet(self):
         """Test: save_to_file creating two rectangle file"""
-        ret1 = Rectangle(14, 7, 10, 9, 3)
-        ret2 = Rectangle(5, 7, 8, 10, 15)
+        ret1 = Rectangle(14, 7, 4, 9, 3)
+        ret2 = Rectangle(5, 7, 8, 6, 15)
         Rectangle.save_to_file([ret1, ret2])
         with open("Rectangle.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 106)
@@ -224,7 +224,7 @@ class TestBasesavetofile(unittest.TestCase):
 
     def test_savetofile_clsnameforfilename(self):
         """Test: save_to_file uses class name as filename"""
-        sqe = Square(9, 6, 3, 7)
+        sqe = Square(19, 6, 3, 7)
         Base.save_to_file([sqe])
         with open("Base.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 39)
@@ -233,7 +233,7 @@ class TestBasesavetofile(unittest.TestCase):
         """Test: save_to_file overwrites file content"""
         sqe = Square(4, 9, 6, 28)
         Square.save_to_file([sqe])
-        sqr = Square(14, 8, 7, 10)
+        sqr = Square(14, 8, 7, 8)
         Square.save_to_file([sqe])
         with open("Square.json", "r") as fl:
             self.assertTrue(len(fl.read()) == 39)
@@ -599,7 +599,7 @@ class TestBaseloadfromfilecsv(unittest.TestCase):
         sqe2 = Square(5, 8, 3, 7)
         Square.save_to_file_csv([sqe1, sqe2])
         loaded_sqr = Square.load_from_file_csv()
-        self.assertEqual(str(sqe2), str(loaded_sqe[1]))
+        self.assertEqual(str(sqe2), str(loaded_sqr[1]))
 
     def testloadfromfilecsvsqrtype(self):
         """Test: load_from_file_csv to retrieve list of squares"""

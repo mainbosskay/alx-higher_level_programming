@@ -84,12 +84,12 @@ class Base:
                 classfl.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
-                    fieldnms = ["id", "width", "height", "x", "y"]
+                    fieldnames = ["id", "width", "height", "x", "y"]
                 else:
-                    fieldnms = ["id", "size", "x", "y"]
-                clwriter = csv.DictWriter(classfl, fieldnms=fieldnms)
+                    fieldnames = ["id", "size", "x", "y"]
+                clwriter = csv.DictWriter(classfl, fieldnames=fieldnames)
                 for objtinst in list_objs:
-                    clwriter.writerow(objtinst.to_dictionart())
+                    clwriter.writerow(objtinst.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
@@ -98,10 +98,10 @@ class Base:
         try:
             with open(flname, "r", newline="") as classfl:
                 if cls.__name__ == "Rectangle":
-                    fieldnms = ["id", "width", "height", "x", "y"]
+                    fieldnames = ["id", "width", "height", "x", "y"]
                 else:
-                    fieldnms = ["id", "size", "x", "y"]
-                lst_dicts = csv.DictReader(classfl, fieldnms=fieldnms)
+                    fieldnames = ["id", "size", "x", "y"]
+                lst_dicts = csv.DictReader(classfl, fieldnames=fieldnames)
                 lst_dicts = [dict([key, int(val)] for key, val in dct.items())
                              for dct in lst_dicts]
                 return [cls.create(**dct) for dct in lst_dicts]
@@ -120,26 +120,26 @@ class Base:
         turtcol.shape("heart")
 
         turtcol.color("#8F9779")
-        for rectgle in list_rectangles:
+        for rect in list_rectangles:
             turtcol.showturtle()
             turtcol.up()
-            turtcol.goto(rectgle.x, rectgle.y)
+            turtcol.goto(rect.x, rect.y)
             turtcol.down()
             for side in range(2):
-                turtcol.forwars(rectgle.width)
+                turtcol.forwars(rect.width)
                 turtcol.left(90)
-                turt.forward(rectgle.height)
+                turt.forward(rect.height)
                 turt.left(90)
             turtcol.hideturtle()
 
         turtcol.color("4682B4")
-        for square in list_squares:
+        for sqre in list_squares:
             turtcol.showturtle()
             turtcol.up()
-            turtcol.goto(square.x, square.y)
+            turtcol.goto(sqre.x, sqre.y)
             turtcol.down()
             for side in range(4):
-                turtcol.forward(sqr.width)
+                turtcol.forward(sqre.width)
                 turtcol.left(90)
             turtcol.hideturtle()
         turtle.exitonclick()
