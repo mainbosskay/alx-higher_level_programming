@@ -5,4 +5,4 @@ class Rectangle {
     this.height = h;
   }
 }
-module.experts = Rectangle;
+module.exports = Rectangle;
