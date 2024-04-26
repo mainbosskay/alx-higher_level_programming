@@ -17,7 +17,7 @@ if __name__ == "__main__":
         urlresp = requests.get(urldt, headers=api_headers)
         urlstatus = urlresp.status_code
         if urlstatus == 200:
-            github_user = urlres.json()
+            github_user = urlresp.json()
             if github_user["login"] == username:
                 print(github_user["id"])
             else:
